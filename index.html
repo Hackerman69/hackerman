@@ -9,7 +9,7 @@
         body {
             background-color: black;
             height: 100vh;
-            width: 100%;
+            width: 100vw;
             font-family: 'tradegothiclt-bold', sans-serif;
             overflow: hidden;
         }
@@ -19,6 +19,7 @@
             font-size: 3vw;
             text-transform: lowercase;
             overflow-wrap: break-word;
+            word-wrap: break-word;
             color: lightgreen;
             font-family: "Courier New", Courier, monospace;
         }
@@ -34,6 +35,7 @@
             }
         }
         #hackerman {
+            overflow: hidden;
             width: 100vh;
         }
     </style>
@@ -56,7 +58,7 @@
                     }, 50);
                 }
                 else if (typeof fnCallback == 'function') {
-                    setTimeout(fnCallback, 2000);
+                    setTimeout(fnCallback, 3000);
                 }
             }
             function StartTextAnimation(i) {
