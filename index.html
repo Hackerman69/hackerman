@@ -141,7 +141,7 @@
                         let pos = 0;
                         var id = setInterval(frame, 10);
                         function frame() {
-                        if (pos == 550) {
+                        if (pos == 400) {
                             elem.style.display = "none"
                             clearInterval(id)
                             next += 1
@@ -169,8 +169,8 @@
                         }
                         else {
                             pos++; 
-                            elem.style.top = 0.8*pos + 'px'; 
-                            elem.style.left = 0.8*pos + 'px';
+                            elem.style.top = pos + 'px'; 
+                            elem.style.left = pos + 'px';
                         }
                         }
                     }
@@ -217,6 +217,7 @@
                         animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
                     }
                     myMove(kanál1)
+
                 }
                 if (i < dataText[i].length) {
                     typeWriter(dataText[i], i, function(){
