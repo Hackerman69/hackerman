@@ -38,14 +38,76 @@
             overflow: hidden;
             width: 100vh;
         }
+        #animated {
+            font-family: "Courier New", Courier, monospace;
+            color: lightgreen;
+            font-size: 3vmin;
+            height: 100vh;
+            width: 100vw;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            overflow: hidden;
+            }
+            #kanál1 {
+            display:none;
+            width: 15vw;
+            height: 15vmin;
+            position: absolute;
+            }
+            #kanál2 {
+            width: 15vw;
+            height: 15vmin;
+            position: absolute;
+            display:none;
+            }
+            #kanál3 {
+            width: 15vw;
+            height: 15vmin;
+            position: absolute;
+            display:none;
+            }
+            #kés1 {
+            width: 15vw;
+            height: 15vmin;
+            position: absolute;
+            display:none;
+            }
+            #kés2 {
+            width: 15vw;
+            height: 15vmin;
+            position: absolute;
+            display:none;
+            }
+            #villa1 {
+            width: 15vw;
+            height: 15vmin;
+            position: absolute;
+            display:none;
+            }
+            #villa2 {
+            width: 15vw;
+            height: 15vmin;
+            position: absolute;
+            display:none;
+            }
     </style>
     </head>
     <body>
         <div id = "hackerman">
             <h1></h1>
         </div>
+        <div id = "animated">
+            <img src = "kanál.png" id ="kanál1"></img>
+            <img src = "kanál.png" id ="kanál2"></img>
+            <img src = "kanál.png" id ="kanál3"></img>
+            <img src = "kés.png" id ="kés1"></img>
+            <img src = "kés.png" id ="kés2"></img>
+            <img src = "villa.png" id ="villa1"></img>
+            <img src = "villa.png" id ="villa2"></img>
+          </div>
         <script>
 
+            var hackerman = document.getElementById("hackerman") 
             document.addEventListener('DOMContentLoaded',function(event){
             var dataText = ["Üdvözletem", "Látom, szóba elegyedtél Lorenzoval, a következő áldozatommal", "Én Hackerman69 vagyok, gondolom, világos, mivel foglalkozom", "A tervem a következő: feltöröm Lorenzo bankszámláját, és minden pénzt leveszek róla", "Ezután az összeset elköltöm kanalakra", "Nagyon szeretem a kanalakat", "Gyakorlatilag a kedvenc dolgaim a világon", "Most jogosan teszed fel a kérdést:", '"Értem én, de mi közöm nekem az egészhez?"', "Nos, csupán annyi, hogy megmentheted Lorenzot ettől a szörnyűségtől", "Persze ennek ára is van", "Szerezned kell nekem egy kanalat", "Persze nem a való világban", "Neeem, az túl elcsépelt lenne", "Készítettem egy játékot, ahol az a cél, hogy eljuss a kanálhoz", "Ha teljesíted, Lorenzo bankszámlája épségben marad"];
 
@@ -63,7 +125,98 @@
             }
             function StartTextAnimation(i) {
                 if (typeof dataText[i] == 'undefined'){
-                    document.querySelector("h1").innerHTML = "sup nibba"+'<span></span>'
+                    hackerman.style.display = "none"
+                    animated = document.getElementById("animated")
+                    var kanál1 = document.getElementById("kanál1");
+                    var kanál2 = document.getElementById("kanál2");
+                    var kanál3 = document.getElementById("kanál3");
+                    var kés1 = document.getElementById("kés1");
+                    var kés2 = document.getElementById("kés2");
+                    var villa1 = document.getElementById("villa1");
+                    var villa2 = document.getElementById("villa2");
+                    var right = 0
+                    var next = 0
+                    function myMove(elem) {
+                        elem.style.display = "block"
+                        let pos = 0;
+                        var id = setInterval(frame, 10);
+                        function frame() {
+                        if (pos == 700) {
+                            elem.style.display = "none"
+                            clearInterval(id)
+                            next += 1
+                            if(next == 1) {
+                            myMove(villa1)
+                            }
+                            if(next == 2) {
+                            myMove(kanál2)
+                            }
+                            if(next == 3) {
+                            myMove(villa2)
+                            }
+                            if(next == 4) {
+                            myMove(kés1)
+                            }
+                            if(next == 5) {
+                            myMove(kés2)
+                            }
+                            if(next == 6) {
+                            myMove(kanál3)
+                            }
+                            if(next == 7 && right != 3) {
+                            késvilla()
+                            }
+                        }
+                        else {
+                            pos++; 
+                            elem.style.top = 0.5*pos + 'px'; 
+                            elem.style.left = 0.5*pos + 'px';
+                        }
+                        }
+                    }
+                    function késvilla() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    kanál1.onclick = function() {
+                        kanál1.style.display = "none"
+                        kanál2.style.display = "none"
+                        kanál3.style.display = "none"
+                        right += 1
+                        if(right == 3) {
+                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
+                        }
+                    }
+                    kanál2.onclick = function() {
+                        kanál1.style.display = "none"
+                        kanál2.style.display = "none"
+                        kanál3.style.display = "none"
+                        right += 1
+                        if(right == 3) {
+                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
+                        }
+                    }
+                    kanál3.onclick = function(){
+                        kanál1.style.display = "none"
+                        kanál2.style.display = "none"
+                        kanál3.style.display = "none"
+                        right += 1
+                        if(right == 3) {
+                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
+                        }
+                    }
+                    villa1.onclick = function() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    villa2.onclick = function() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    kés1.onclick = function() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    kés2.onclick = function() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    myMove(kanál1)
                 }
                 if (i < dataText[i].length) {
                     typeWriter(dataText[i], i, function(){
