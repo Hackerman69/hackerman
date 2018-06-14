@@ -7,59 +7,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
-        background-color: black;
-        height: 100%;
-        font-family: 'tradegothiclt-bold', sans-serif;
+            background-color: black;
+            height: 100vh;
+            width: 100%;
+            font-family: 'tradegothiclt-bold', sans-serif;
+            overflow: hidden;
         }
 
         h1 {
-        font-size: 5vmin;
-        color: lightgreen;
-        font-family: "Courier New", Courier, monospace;
+            width: 100vw;
+            font-size: 3vw;
+            text-transform: lowercase;
+            overflow-wrap: break-word;
+            color: lightgreen;
+            font-family: "Courier New", Courier, monospace;
         }
 
         span {
-        border-right: .05em solid;
-        animation: caret 1s steps(1) infinite;
+            border-right: .05em solid;
+            animation: caret 1s steps(1) infinite;
         }
 
         @keyframes caret {
-        50% {
-            border-color: transparent;
+            50% {
+                border-color: transparent;
+            }
         }
+        #hackerman {
+            width: 100vh;
         }
     </style>
     </head>
     <body>
-        <div>
+        <div id = "hackerman">
             <h1></h1>
         </div>
         <script>
+
             document.addEventListener('DOMContentLoaded',function(event){
-            var dataText = ["sup", "átmegy ez a következő sorba?", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, aaaaaaaaaaaaaaa"];
+            var dataText = ["Üdvözletem!", "Látom, szóba elegyedtél Lorenzoval, a következő áldozatommal.", "Én Hackerman69 vagyok, gondolom, világos, mivel foglalkozom.", "A tervem a következő: feltöröm Lorenzo bankszámláját, és minden pénzt leveszek róla.", "Ezután az összeset elköltöm kanalakra.", "Nagyon szeretem a kanalakat.", "Gyakorlatilag a kedvenc dolgaim a világon.", "Most jogosan teszed fel a kérdést:", '"Értem én, de mi közöm nekem az egészhez?"', "Nos, csupán annyi, hogy megmentheted Lorenzot ettől a szörnyűségtől.", "Persze ennek ára is van.", "Szerezned kell nekem egy kanalat.", "Persze nem a való világban.", "Neeem, az túl elcsépelt lenne.", "Készítettem egy játékot, ahol az a cél, hogy eljuss a kanálhoz.", "Ha teljesíted, Lorenzo bankszámlája épségben marad."];
 
             function typeWriter(text, i, fnCallback) {
                 if (i < (text.length)) {
-                document.querySelector("h1").innerHTML = text.substring(0, i+1)+'<span></span>'
+                    document.querySelector("h1").innerHTML = text.substring(0, i+1)+'<span></span>'
 
-                setTimeout(function() {
-                    typeWriter(text, i + 1, fnCallback)
-                }, 50);
+                    setTimeout(function() {
+                        typeWriter(text, i + 1, fnCallback)
+                    }, 50);
                 }
                 else if (typeof fnCallback == 'function') {
-                setTimeout(fnCallback, 2000);
+                    setTimeout(fnCallback, 2000);
                 }
             }
             function StartTextAnimation(i) {
                 if (typeof dataText[i] == 'undefined'){
-                    setTimeout(function() {
-                    StartTextAnimation(0);
-                    }, 20000);
+                    
                 }
                 if (i < dataText[i].length) {
-                typeWriter(dataText[i], 0, function(){
-                StartTextAnimation(i + 1);
-                });
+                    typeWriter(dataText[i], i, function(){
+                        StartTextAnimation(i + 1);
+                    });
                 }
             }
             StartTextAnimation(0);
