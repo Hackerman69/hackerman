@@ -90,11 +90,20 @@
             position: absolute;
             display:none;
             }
+            #skip {
+                width: 5vh;
+                background: black;
+                border:0;
+                color:lightgreen;
+                margin-top: 70vh;
+                font-family: 'Courier New', Courier, monospace
+            }
     </style>
     </head>
     <body>
         <div id = "hackerman">
             <h1></h1>
+            <button id = "skip">skip</button>
         </div>
         <div id = "animated">
             <img src = "kanál.png" id ="kanál1"></img>
@@ -227,6 +236,102 @@
             }
             StartTextAnimation(0);
             });
+
+            skip = document.getElementById("skip")
+            skip.onclick = function() {
+                hackerman.style.display = "none"
+                    animated = document.getElementById("animated")
+                    var kanál1 = document.getElementById("kanál1");
+                    var kanál2 = document.getElementById("kanál2");
+                    var kanál3 = document.getElementById("kanál3");
+                    var kés1 = document.getElementById("kés1");
+                    var kés2 = document.getElementById("kés2");
+                    var villa1 = document.getElementById("villa1");
+                    var villa2 = document.getElementById("villa2");
+                    var right = 0
+                    var next = 0
+                    function myMove(elem) {
+                        elem.style.display = "block"
+                        let pos = 0;
+                        var id = setInterval(frame, 10);
+                        function frame() {
+                        if (pos == 400) {
+                            elem.style.display = "none"
+                            clearInterval(id)
+                            next += 1
+                            if(next == 1) {
+                            myMove(villa1)
+                            }
+                            if(next == 2) {
+                            myMove(kanál2)
+                            }
+                            if(next == 3) {
+                            myMove(villa2)
+                            }
+                            if(next == 4) {
+                            myMove(kés1)
+                            }
+                            if(next == 5) {
+                            myMove(kés2)
+                            }
+                            if(next == 6) {
+                            myMove(kanál3)
+                            }
+                            if(next == 7 && right != 3) {
+                            késvilla()
+                            }
+                        }
+                        else {
+                            pos++; 
+                            elem.style.top = pos + 'px'; 
+                            elem.style.left = pos + 'px';
+                        }
+                        }
+                    }
+                    function késvilla() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    kanál1.onclick = function() {
+                        kanál1.style.display = "none"
+                        kanál2.style.display = "none"
+                        kanál3.style.display = "none"
+                        right += 1
+                        if(right == 3) {
+                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
+                        }
+                    }
+                    kanál2.onclick = function() {
+                        kanál1.style.display = "none"
+                        kanál2.style.display = "none"
+                        kanál3.style.display = "none"
+                        right += 1
+                        if(right == 3) {
+                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
+                        }
+                    }
+                    kanál3.onclick = function(){
+                        kanál1.style.display = "none"
+                        kanál2.style.display = "none"
+                        kanál3.style.display = "none"
+                        right += 1
+                        if(right == 3) {
+                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
+                        }
+                    }
+                    villa1.onclick = function() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    villa2.onclick = function() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    kés1.onclick = function() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    kés2.onclick = function() {
+                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    }
+                    myMove(kanál1)
+            }
         </script>
     </body>
 </html>
