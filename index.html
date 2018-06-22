@@ -164,10 +164,10 @@
             var started = false
                 
             function typeWriter(text, i, fnCallback) {
-                if(started) {
-                    break
-                }
                 if (i < (text.length)) {
+                    if(started) {
+                        break
+                    }
                     document.querySelector("h1").innerHTML = text.substring(0, i+1)+'<span></span>'
 
                     setTimeout(function() {
@@ -175,6 +175,9 @@
                     }, 30);
                 }
                 else if (typeof fnCallback == 'function') {
+                    if(started) {
+                        break
+                    }
                     setTimeout(fnCallback, 3000);
                 }
             }
@@ -315,7 +318,13 @@
 
                 }
                 if (i < dataText[i].length) {
+                    if(started) {
+                        break
+                    }
                     typeWriter(dataText[i], i, function(){
+                        if(started) {
+                            break
+                        }
                         StartTextAnimation(i + 1);
                     });
                 }
