@@ -161,8 +161,12 @@
             var text = document.getElementById("text")
             document.addEventListener('DOMContentLoaded',function(event){
             var dataText = ["Üdvözletem", "Látom, szóba elegyedtél Lorenzoval, a következő áldozatommal", "Én Hackerman69 vagyok, gondolom, világos, mivel foglalkozom", "A tervem a következő: feltöröm Lorenzo bankszámláját, és minden pénzt leveszek róla", "Ezután az összeset elköltöm kanalakra", "Nagyon szeretem a kanalakat", "Gyakorlatilag a kedvenc dolgaim a világon", "Most jogosan teszed fel a kérdést:", '"Értem én, de mi közöm nekem az egészhez?"', "Nos, csupán annyi, hogy megmentheted Lorenzot ettől a szörnyűségtől", "Persze ennek ára is van", "Szerezned kell nekem egy kanalat", "Persze nem a való világban", "Neeem, az túl elcsépelt lenne", "Készítettem egy játékot, ahol az a cél, hogy eljuss a kanálhoz", "Ha teljesíted, Lorenzo bankszámlája épségben marad", "A játék felépítése:","A képernyőn evőeszközöket fogsz látni", "a kanalakra nyomj rá","Vigyázz, mert átváltoznak!","sok sikert, gondolj lorenzora"];
-
+            var started = false
+                
             function typeWriter(text, i, fnCallback) {
+                if(started) {
+                    break
+                }
                 if (i < (text.length)) {
                     document.querySelector("h1").innerHTML = text.substring(0, i+1)+'<span></span>'
 
@@ -175,8 +179,12 @@
                 }
             }
             function StartTextAnimation(i) {
+                if (started) {
+                    break
+                }
                 if (typeof dataText[i] == 'undefined'){
                     hackerman.style.display = "none"
+                    started = true
                     
                     var right = 0
                     var wrong = 0
@@ -317,6 +325,7 @@
 
             skip = document.getElementById("skip")
             skip.onclick = function() {
+                started = true
                 dataText = []
                 var hackerman = document.getElementById("hackerman")
                 hackerman.style.display = "none"
