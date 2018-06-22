@@ -293,6 +293,7 @@
                         text.innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
                         clearInterval(gameinterval)
                         skip.style.display = "none"
+                        dataText = []
                     }
                     if(wrong == 1) {
                         hackerman.style.display = "block"
@@ -300,6 +301,7 @@
                         text.innerHTML = "adok még egy esélyt, ha újratöltöd az oldalt"
                         clearInterval(gameinterval)
                         skip.style.display = "none"
+                        dataText = []
                     }
                     }, 1000)
 
@@ -310,7 +312,7 @@
                     });
                 }
             }
-            StartTextAnimation(0);
+            window.onload = StartTextAnimation(0);
             });
 
             skip = document.getElementById("skip")
@@ -380,6 +382,7 @@
 
                     var gameinterval = setInterval(function () {
                     if(right == 3) {
+                        dataText = []
                         hackerman.style.display = "block"
                         game.style.display = "none"
                         text.innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
@@ -387,6 +390,7 @@
                         skip.style.display = "none"
                     }
                     if(wrong == 1) {
+                        dataText = []
                         hackerman.style.display = "block"
                         game.style.display = "none"
                         text.innerHTML = "adok még egy esélyt ha újratöltöd az oladlt"
@@ -427,6 +431,7 @@
                         }
                     }
                     if(right == 3) {
+                        dataText = []
                         hackerman.style.display = "block"
                         game.style.display = "none"
                         text.innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
@@ -434,6 +439,7 @@
                         skip.style.display = "none"
                     }
                     if(wrong == 1) {
+                        dataText = []
                         hackerman.style.display = "block"
                         game.style.display = "none"
                         text.innerHTML = "adok még egy esélyt ha újratöltöd az oldalt"
