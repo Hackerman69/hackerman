@@ -53,48 +53,7 @@
             word-wrap: break-word;
             overflow: hidden;
             }
-            #kanál1 {
-            display:none;
-            width: 15vw;
-            height: 15vmin;
-            position: absolute;
-            }
-            #kanál2 {
-            width: 15vw;
-            height: 15vmin;
-            position: absolute;
-            display:none;
-            }
-            #kanál3 {
-            width: 15vw;
-            height: 15vmin;
-            position: absolute;
-            display:none;
-            }
-            #kés1 {
-            width: 15vw;
-            height: 15vmin;
-            position: absolute;
-            display:none;
-            }
-            #kés2 {
-            width: 15vw;
-            height: 15vmin;
-            position: absolute;
-            display:none;
-            }
-            #villa1 {
-            width: 15vw;
-            height: 15vmin;
-            position: absolute;
-            display:none;
-            }
-            #villa2 {
-            width: 15vw;
-            height: 15vmin;
-            position: absolute;
-            display:none;
-            }
+
             #skip {
                 width: 5vh;
                 background: black;
@@ -103,27 +62,104 @@
                 margin-top: 70vh; 
                 font-family: 'Courier New', Courier, monospace
             }
+            img[src = "kanál.png"] {
+                height: 25vh;
+                width: 25vw;
+            }
+
+            img[src = "kés.png"] {
+                height: 25vh;
+                width: 25vw;
+            }
+
+            img[src = "villa.png"] {
+                height: 25vh;
+                width: 25vw;
+            }
+                
+            #game {
+                display: grid;
+                display: none;
+            }
+
+            #g00 {
+                grid-column-start: 1;
+                grid-column-end: 1;
+                grid-row-start: 1;
+                grid-row-end: 1;
+            }
+            #g01 {
+                grid-column-start: 1;
+                grid-column-end: 1;
+                grid-row-start: 2;
+                grid-row-end: 2;
+            }
+            #g02 {
+                grid-column-start: 1;
+                grid-column-end: 1;
+                grid-row-start: 3;
+                grid-row-end: 3;
+            }
+            #g10 {
+                grid-column-start: 2;
+                grid-column-end: 2;
+                grid-row-start: 1;
+                grid-row-end: 1;
+            }
+            #g11 {
+                grid-column-start: 2;
+                grid-column-end: 2;
+                grid-row-start: 2;
+                grid-row-end: 2;
+            }
+            #g12 {
+                grid-column-start: 2;
+                grid-column-end: 2;
+                grid-row-start: 3;
+                grid-row-end: 3;
+            }
+            #g20 {
+                grid-column-start: 3;
+                grid-column-end: 3;
+                grid-row-start: 1;
+                grid-row-end: 1;
+            }
+            #g21 {
+                grid-column-start: 3;
+                grid-column-end: 3;
+                grid-row-start: 2;
+                grid-row-end: 2;
+            }
+            #g22 {
+                grid-column-start: 3;
+                grid-column-end: 3;
+                grid-row-start: 3;
+                grid-row-end: 3;
+            }
     </style>
     </head>
     <body>
         <div id = "hackerman">
-            <h1></h1>
+            <h1 id = "text"></h1>
             <button id = "skip">skip</button>
         </div>
-        <div id = "animated">
-            <img src = "kanál.png" id ="kanál1"></img>
-            <img src = "kanál.png" id ="kanál2"></img>
-            <img src = "kanál.png" id ="kanál3"></img>
-            <img src = "kés.png" id ="kés1"></img>
-            <img src = "kés.png" id ="kés2"></img>
-            <img src = "villa.png" id ="villa1"></img>
-            <img src = "villa.png" id ="villa2"></img>
-          </div>
+        <div id = "game">
+            <div id = "g00"></div>
+            <div id = "g10"></div>
+            <div id = "g20"></div>
+            <div id = "g01"></div>
+            <div id = "g11"></div>
+            <div id = "g21"></div>
+            <div id = "g02"></div>
+            <div id = "g12"></div>
+            <div id = "g22"></div>
+          </div>  
         <script>
 
             var hackerman = document.getElementById("hackerman") 
+            var text = document.getElementById("text")
             document.addEventListener('DOMContentLoaded',function(event){
-            var dataText = ["Üdvözletem", "Látom, szóba elegyedtél Lorenzoval, a következő áldozatommal", "Én Hackerman69 vagyok, gondolom, világos, mivel foglalkozom", "A tervem a következő: feltöröm Lorenzo bankszámláját, és minden pénzt leveszek róla", "Ezután az összeset elköltöm kanalakra", "Nagyon szeretem a kanalakat", "Gyakorlatilag a kedvenc dolgaim a világon", "Most jogosan teszed fel a kérdést:", '"Értem én, de mi közöm nekem az egészhez?"', "Nos, csupán annyi, hogy megmentheted Lorenzot ettől a szörnyűségtől", "Persze ennek ára is van", "Szerezned kell nekem egy kanalat", "Persze nem a való világban", "Neeem, az túl elcsépelt lenne", "Készítettem egy játékot, ahol az a cél, hogy eljuss a kanálhoz", "Ha teljesíted, Lorenzo bankszámlája épségben marad", "A játék felépítése:","A képernyőn evőeszközök fognak átrepülni", "kések, villák, és kanalak", "Ha kanalat látsz, kapd el!","Vigyázz, mert ha túl gyorsan nyomogatsz, akkor nem fog sikerülni","kicsit a képek elé nyomj","sok sikert, gondolj lorenzora"];
+            var dataText = ["Üdvözletem", "Látom, szóba elegyedtél Lorenzoval, a következő áldozatommal", "Én Hackerman69 vagyok, gondolom, világos, mivel foglalkozom", "A tervem a következő: feltöröm Lorenzo bankszámláját, és minden pénzt leveszek róla", "Ezután az összeset elköltöm kanalakra", "Nagyon szeretem a kanalakat", "Gyakorlatilag a kedvenc dolgaim a világon", "Most jogosan teszed fel a kérdést:", '"Értem én, de mi közöm nekem az egészhez?"', "Nos, csupán annyi, hogy megmentheted Lorenzot ettől a szörnyűségtől", "Persze ennek ára is van", "Szerezned kell nekem egy kanalat", "Persze nem a való világban", "Neeem, az túl elcsépelt lenne", "Készítettem egy játékot, ahol az a cél, hogy eljuss a kanálhoz", "Ha teljesíted, Lorenzo bankszámlája épségben marad", "A játék felépítése:","A képernyőn evőeszközöket fogsz látni", "a kanalakra nyomj rá","Vigyázz, mert átváltoznak!","sok sikert, gondolj lorenzora"];
 
             function typeWriter(text, i, fnCallback) {
                 if (i < (text.length)) {
@@ -131,106 +167,139 @@
 
                     setTimeout(function() {
                         typeWriter(text, i + 1, fnCallback)
-                    }, 30);
+                    }, 0);
                 }
                 else if (typeof fnCallback == 'function') {
-                    setTimeout(fnCallback, 3000);
+                    setTimeout(fnCallback, 000);
                 }
             }
             function StartTextAnimation(i) {
                 if (typeof dataText[i] == 'undefined'){
                     hackerman.style.display = "none"
-                    animated = document.getElementById("animated")
-                    var kanál1 = document.getElementById("kanál1");
-                    var kanál2 = document.getElementById("kanál2");
-                    var kanál3 = document.getElementById("kanál3");
-                    var kés1 = document.getElementById("kés1");
-                    var kés2 = document.getElementById("kés2");
-                    var villa1 = document.getElementById("villa1");
-                    var villa2 = document.getElementById("villa2");
+                    
                     var right = 0
-                    var next = 0
-                    function myMove(elem) {
-                        elem.style.display = "block"
-                        let pos = 0;
-                        var id = setInterval(frame, 10);
-                        function frame() {
-                        if (pos == 400) {
-                            elem.style.display = "none"
-                            clearInterval(id)
-                            next += 1
-                            if(next == 1) {
-                            myMove(villa1)
+                    var wrong = 0
+
+                    var kanál = '<img class = "kanál" src="kanál.png">'
+                    var kés = '<img class = "késvilla" src="kés.png">'
+                    var villa = '<img class = "késvilla" src="villa.png">'
+                    var game = document.getElementById("game")
+                    game.style.display = "block"
+                    game.style.display = "grid"
+
+                    var firsttime = []
+                    for(let i = 0; i < 3; i++) {
+                    firsttime.push(villa)
+                    }
+                    for(let i = 0; i < 3; i++) {
+                    firsttime.push(kanál)
+                    }
+                    for(let i = 0; i < 3; i++) {
+                    firsttime.push(kés)
+                    }
+
+                    function shuffleArray(array) {
+                    for (var i = array.length - 1; i > 0; i--) {
+                        var j = Math.floor(Math.random() * (i + 1));
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                    }
+                    shuffleArray(firsttime)
+                    var matrix =[]
+                    for(let i = 0; i < 3; i++) {
+                    matrix.push([])
+                    }
+                    
+                    while(firsttime.length) {
+                    for(let i = 0; i < 3; i++) {
+                        for(let k = 0; k < 3; k++) {
+                        let index = Math.floor(Math.random * firsttime.length)
+                        let element = firsttime.splice(index, 1)
+                        matrix[i][k] = element
+                        document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
+                        }
+                        
+                    }
+                    }
+                    
+                    var kanalak = document.getElementsByClassName("kanál")
+                    kanalak.onclick = function() {
+                        console.log("gratula")
+                        right++
+                    }
+
+                    var késvilla = document.getElementsByClassName("késvilla")
+                    késvilla.onclick = function() {
+                        console.log("balfasz")
+                        wrong++
+                    }
+                    
+
+                    var gameinterval = setInterval(function () {
+                    if(right == 3) {
+                        hackerman.style.display = "block"
+                        game.style.display = "none"
+                        text.innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
+                        clearInterval(gameinterval)
+                        skip.style.display = "none"
+                    }
+                    if(wrong == 1) {
+                        hackerman.style.display = "block"
+                        game.style.display = "none"
+                        text.innerHTML = "adok még egy esélyt, ha újratöltöd az oldalt"
+                        clearInterval(gameinterval)
+                        skip.style.display = "none"
+                    }
+                    for(let anyád = 0; anyád < 10; anyád++) {
+                        do {
+                        var i = Math.floor(Math.random() * 3)
+                        var k = Math.floor(Math.random() * 3)
+                        var random1 = Math.floor(Math.random() * 3)
+                        var random2 = Math.floor(Math.random() * 3)
+                        }
+                        while(matrix[i][k] == matrix[random1][random2])
+                        let temp = matrix[random1][random2]
+                        matrix[random1][random2] = matrix[i][k]
+                        matrix[i][k] = temp
+                        document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
+                        document.getElementById("g"+String(random1)+String(random2)).innerHTML = matrix[random1][random2]
+                    }
+                    for(let j = 0; j < 3; j++) {
+                        for(let l = 0; l < 3; l++) {
+                            if(matrix[j][l][0] == kanál) {
+                                document.getElementById("g"+String(j)+String(l)).onclick = function() {
+                                console.log("gratula")
+                                right++
+                                matrix[j][l] = villa
+                                document.getElementById("g"+String(j)+String(l)).innerHTML = matrix[j][l]
+                                }
                             }
-                            if(next == 2) {
-                            myMove(kanál2)
-                            }
-                            if(next == 3) {
-                            myMove(villa2)
-                            }
-                            if(next == 4) {
-                            myMove(kés1)
-                            }
-                            if(next == 5) {
-                            myMove(kés2)
-                            }
-                            if(next == 6) {
-                            myMove(kanál3)
-                            }
-                            if(next == 7 && right != 3) {
-                            késvilla()
+                            else {
+                                document.getElementById("g"+String(j)+String(l)).onclick = function() {
+                                console.log("balfasz")
+                                wrong++
+                                document.getElementById("g"+String(j)+String(l)).innerHTML = ""
+                                }
                             }
                         }
-                        else {
-                            pos++; 
-                            elem.style.top = pos + 'px'; 
-                            elem.style.left = pos + 'px';
-                        }
-                        }
                     }
-                    function késvilla() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    if(right == 3) {
+                        hackerman.style.display = "block"
+                        game.style.display = "none"
+                        text.innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
+                        clearInterval(gameinterval)
+                        skip.style.display = "none"
                     }
-                    kanál1.onclick = function() {
-                        kanál1.style.display = "none"
-                        kanál2.style.display = "none"
-                        kanál3.style.display = "none"
-                        right += 1
-                        if(right == 3) {
-                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
-                        }
+                    if(wrong == 1) {
+                        hackerman.style.display = "block"
+                        game.style.display = "none"
+                        text.innerHTML = "adok még egy esélyt, ha újratöltöd az oldalt"
+                        clearInterval(gameinterval)
+                        skip.style.display = "none"
                     }
-                    kanál2.onclick = function() {
-                        kanál1.style.display = "none"
-                        kanál2.style.display = "none"
-                        kanál3.style.display = "none"
-                        right += 1
-                        if(right == 3) {
-                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
-                        }
-                    }
-                    kanál3.onclick = function(){
-                        kanál1.style.display = "none"
-                        kanál2.style.display = "none"
-                        kanál3.style.display = "none"
-                        right += 1
-                        if(right == 3) {
-                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
-                        }
-                    }
-                    villa1.onclick = function() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
-                    }
-                    villa2.onclick = function() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
-                    }
-                    kés1.onclick = function() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
-                    }
-                    kés2.onclick = function() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
-                    }
-                    myMove(kanál1)
+                    }, 1000)
 
                 }
                 if (i < dataText[i].length) {
@@ -244,98 +313,131 @@
 
             skip = document.getElementById("skip")
             skip.onclick = function() {
+                var hackerman = document.getElementById("hackerman")
                 hackerman.style.display = "none"
-                    animated = document.getElementById("animated")
-                    var kanál1 = document.getElementById("kanál1");
-                    var kanál2 = document.getElementById("kanál2");
-                    var kanál3 = document.getElementById("kanál3");
-                    var kés1 = document.getElementById("kés1");
-                    var kés2 = document.getElementById("kés2");
-                    var villa1 = document.getElementById("villa1");
-                    var villa2 = document.getElementById("villa2");
-                    var right = 0
-                    var next = 0
-                    function myMove(elem) {
-                        elem.style.display = "block"
-                        let pos = 0;
-                        var id = setInterval(frame, 10);
-                        function frame() {
-                        if (pos == 400) {
-                            elem.style.display = "none"
-                            clearInterval(id)
-                            next += 1
-                            if(next == 1) {
-                            myMove(villa1)
-                            }
-                            if(next == 2) {
-                            myMove(kanál2)
-                            }
-                            if(next == 3) {
-                            myMove(villa2)
-                            }
-                            if(next == 4) {
-                            myMove(kés1)
-                            }
-                            if(next == 5) {
-                            myMove(kés2)
-                            }
-                            if(next == 6) {
-                            myMove(kanál3)
-                            }
-                            if(next == 7 && right != 3) {
-                            késvilla()
+                var right = 0
+                var wrong = 0
+
+                    var kanál = '<img class = "kanál" src="kanál.png">'
+                    var kés = '<img class = "késvilla" src="kés.png">'
+                    var villa = '<img class = "késvilla" src="villa.png">'
+                    var game = document.getElementById("game")
+                    game.style.display = "block"
+                    game.style.display = "grid"
+
+                    var firsttime = []
+                    for(let i = 0; i < 3; i++) {
+                    firsttime.push(villa)
+                    }
+                    for(let i = 0; i < 3; i++) {
+                    firsttime.push(kanál)
+                    }
+                    for(let i = 0; i < 3; i++) {
+                    firsttime.push(kés)
+                    }
+
+                    function shuffleArray(array) {
+                    for (var i = array.length - 1; i > 0; i--) {
+                        var j = Math.floor(Math.random() * (i + 1));
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                    }
+                    shuffleArray(firsttime)
+                    var matrix =[]
+                    for(let i = 0; i < 3; i++) {
+                    matrix.push([])
+                    }
+                    
+                    while(firsttime.length) {
+                    for(let i = 0; i < 3; i++) {
+                        for(let k = 0; k < 3; k++) {
+                        let index = Math.floor(Math.random * firsttime.length)
+                        let element = firsttime.splice(index, 1)
+                        matrix[i][k] = element
+                        document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
+                        }
+                        
+                    }
+                    }
+                    
+                    var kanalak = document.getElementsByClassName("kanál")
+                    kanalak.onclick = function() {
+                    console.log("gratula")
+                    right++
+                    }
+
+                    var késvilla = document.getElementsByClassName("késvilla")
+                    késvilla.onclick = function() {
+                    console.log("balfasz")
+                    wrong++
+                    }
+                    
+
+                    var gameinterval = setInterval(function () {
+                    if(right == 3) {
+                        hackerman.style.display = "block"
+                        game.style.display = "none"
+                        text.innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
+                        clearInterval(gameinterval)
+                        skip.style.display = "none"
+                    }
+                    if(wrong == 1) {
+                        hackerman.style.display = "block"
+                        game.style.display = "none"
+                        text.innerHTML = "adok még egy esélyt ha újratöltöd az oladlt"
+                        clearInterval(gameinterval)
+                        skip.style.display = "none"
+                    }
+                    for(let anyád = 0; anyád < 10; anyád++) {
+                        do {
+                        var i = Math.floor(Math.random() * 3)
+                        var k = Math.floor(Math.random() * 3)
+                        var random1 = Math.floor(Math.random() * 3)
+                        var random2 = Math.floor(Math.random() * 3)
+                        }
+                        while(matrix[i][k] == matrix[random1][random2])
+                        let temp = matrix[random1][random2]
+                        matrix[random1][random2] = matrix[i][k]
+                        matrix[i][k] = temp
+                        document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
+                        document.getElementById("g"+String(random1)+String(random2)).innerHTML = matrix[random1][random2]
+                    }
+                    for(let j = 0; j < 3; j++) {
+                        for(let l = 0; l < 3; l++) {
+                        if(matrix[j][l][0] == kanál) {
+                            document.getElementById("g"+String(j)+String(l)).onclick = function() {
+                            console.log("gratula")
+                            right++
+                            matrix[j][l] = villa
+                            document.getElementById("g"+String(j)+String(l)).innerHTML = matrix[j][l]
                             }
                         }
                         else {
-                            pos++; 
-                            elem.style.top = pos + 'px'; 
-                            elem.style.left = pos + 'px';
+                            document.getElementById("g"+String(j)+String(l)).onclick = function() {
+                            console.log("balfasz")
+                            wrong++
+                            document.getElementById("g"+String(j)+String(l)).innerHTML = ""
+                            }
                         }
                         }
                     }
-                    function késvilla() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
+                    if(right == 3) {
+                        hackerman.style.display = "block"
+                        game.style.display = "none"
+                        text.innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
+                        clearInterval(gameinterval)
+                        skip.style.display = "none"
                     }
-                    kanál1.onclick = function() {
-                        kanál1.style.display = "none"
-                        kanál2.style.display = "none"
-                        kanál3.style.display = "none"
-                        right += 1
-                        if(right == 3) {
-                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
-                        }
+                    if(wrong == 1) {
+                        hackerman.style.display = "block"
+                        game.style.display = "none"
+                        text.innerHTML = "adok még egy esélyt ha újratöltöd az oldalt"
+                        clearInterval(gameinterval)
+                        skip.style.display = "none"
                     }
-                    kanál2.onclick = function() {
-                        kanál1.style.display = "none"
-                        kanál2.style.display = "none"
-                        kanál3.style.display = "none"
-                        right += 1
-                        if(right == 3) {
-                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
-                        }
-                    }
-                    kanál3.onclick = function(){
-                        kanál1.style.display = "none"
-                        kanál2.style.display = "none"
-                        kanál3.style.display = "none"
-                        right += 1
-                        if(right == 3) {
-                        animated.innerHTML = "gratulálok. Lorenzonak azt mondd, hogy a hajó megállt. érteni fogja"
-                        }
-                    }
-                    villa1.onclick = function() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
-                    }
-                    villa2.onclick = function() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
-                    }
-                    kés1.onclick = function() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
-                    }
-                    kés2.onclick = function() {
-                        animated.innerHTML = "elrontottad, de még egy próbát megengedek, ha újratöltöd az oldalt"
-                    }
-                    myMove(kanál1)
+                    }, 1000)
             }
         </script>
     </body>
