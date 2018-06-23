@@ -87,6 +87,13 @@
             #game {
                 display: grid;
                 display: none;
+                width: 100vw;
+                font-size: 3vw;
+                text-transform: lowercase;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                color: lightgreen;
+                font-family: "Courier New", Courier, monospace;
             }
 
             #g00 {
@@ -167,8 +174,7 @@
             var text = document.getElementById("text")
             document.addEventListener('DOMContentLoaded',function(event){
             var dataText = ["Üdvözletem", "Látom, szóba elegyedtél Lorenzoval, a következő áldozatommal", "Én Hackerman69 vagyok, gondolom, világos, mivel foglalkozom", "A tervem a következő: feltöröm Lorenzo bankszámláját, és minden pénzt leveszek róla", "Ezután az összeset elköltöm kanalakra", "Nagyon szeretem a kanalakat", "Gyakorlatilag a kedvenc dolgaim a világon", "Most jogosan teszed fel a kérdést:", '"Értem én, de mi közöm nekem az egészhez?"', "Nos, csupán annyi, hogy megmentheted Lorenzot ettől a szörnyűségtől", "Persze ennek ára is van", "Szerezned kell nekem egy kanalat", "Persze nem a való világban", "Neeem, az túl elcsépelt lenne", "Készítettem egy játékot, ahol az a cél, hogy eljuss a kanálhoz", "Ha teljesíted, Lorenzo bankszámlája épségben marad", "A játék felépítése:","A képernyőn evőeszközöket fogsz látni", "a kanalakra nyomj rá","Vigyázz, mert átváltoznak!","sok sikert, gondolj lorenzora"];
-            var body = document.getElementsByTagName("body")
-                
+
             function typeWriter(text, i, fnCallback) {
                 if (i < (text.length)) {
                     document.querySelector("h1").innerHTML = text.substring(0, i+1)+'<span></span>'
@@ -198,36 +204,36 @@
 
                     var firsttime = []
                     for(let i = 0; i < 3; i++) {
-                    firsttime.push(villa)
+                        firsttime.push(villa)
                     }
                     for(let i = 0; i < 3; i++) {
-                    firsttime.push(kanál)
+                        firsttime.push(kanál)
                     }
                     for(let i = 0; i < 3; i++) {
-                    firsttime.push(kés)
+                        firsttime.push(kés)
                     }
 
                     function shuffleArray(array) {
-                    for (var i = array.length - 1; i > 0; i--) {
-                        var j = Math.floor(Math.random() * (i + 1));
-                        var temp = array[i];
-                        array[i] = array[j];
-                        array[j] = temp;
-                    }
+                        for (var i = array.length - 1; i > 0; i--) {
+                            var j = Math.floor(Math.random() * (i + 1));
+                            var temp = array[i];
+                            array[i] = array[j];
+                            array[j] = temp;
+                        }
                     }
                     shuffleArray(firsttime)
                     var matrix =[]
                     for(let i = 0; i < 3; i++) {
-                    matrix.push([])
+                        matrix.push([])
                     }
                     
                     while(firsttime.length) {
                     for(let i = 0; i < 3; i++) {
                         for(let k = 0; k < 3; k++) {
-                        let index = Math.floor(Math.random * firsttime.length)
-                        let element = firsttime.splice(index, 1)
-                        matrix[i][k] = element
-                        document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
+                            let index = Math.floor(Math.random * firsttime.length)
+                            let element = firsttime.splice(index, 1)
+                            matrix[i][k] = element
+                            document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
                         }
                         
                     }
@@ -248,22 +254,19 @@
 
                     var gameinterval = setInterval(function () {
                     if(right == 3) {
-                        game.style.display = "none"
-                        body[0].innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"                        clearInterval(gameinterval)
-                        skip.style.display = "none"
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"              
+                        clearInterval(gameinterval)                    
                     }
                     if(wrong == 1) {
-                        game.style.display = "none"
-                        body[0].innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
-                        clearInterval(gameinterval)
-                        skip.style.display = "none"
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva" 
+                        clearInterval(gameinterval)                    
                     }
                     for(let anyád = 0; anyád < 10; anyád++) {
                         do {
-                        var i = Math.floor(Math.random() * 3)
-                        var k = Math.floor(Math.random() * 3)
-                        var random1 = Math.floor(Math.random() * 3)
-                        var random2 = Math.floor(Math.random() * 3)
+                            var i = Math.floor(Math.random() * 3)
+                            var k = Math.floor(Math.random() * 3)
+                            var random1 = Math.floor(Math.random() * 3)
+                            var random2 = Math.floor(Math.random() * 3)
                         }
                         while(matrix[i][k] == matrix[random1][random2])
                         let temp = matrix[random1][random2]
@@ -292,15 +295,12 @@
                         }
                     }
                     if(right == 3) {
-                        game.style.display = "none"
-                        body[0].innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"                        clearInterval(gameinterval)
-                        skip.style.display = "none"
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"              
+                        clearInterval(gameinterval)                    
                     }
                     if(wrong == 1) {
-                        game.style.display = "none"
-                        body[0].innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
-                        clearInterval(gameinterval)
-                        skip.style.display = "none"
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva" 
+                        clearInterval(gameinterval)                    
                     }
                     }, 1000)
 
@@ -358,10 +358,10 @@
                     while(firsttime.length) {
                     for(let i = 0; i < 3; i++) {
                         for(let k = 0; k < 3; k++) {
-                        let index = Math.floor(Math.random * firsttime.length)
-                        let element = firsttime.splice(index, 1)
-                        matrix[i][k] = element
-                        document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
+                            let index = Math.floor(Math.random * firsttime.length)
+                            let element = firsttime.splice(index, 1)
+                            matrix[i][k] = element
+                            document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
                         }
                         
                     }
@@ -369,35 +369,32 @@
                     
                     var kanalak = document.getElementsByClassName("kanál")
                     kanalak.onclick = function() {
-                    console.log("gratula")
-                    right++
+                        console.log("gratula")
+                        right++
                     }
 
                     var késvilla = document.getElementsByClassName("késvilla")
                     késvilla.onclick = function() {
-                    console.log("balfasz")
-                    wrong++
+                        console.log("balfasz")
+                        wrong++
                     }
                     
 
                     var gameinterval = setInterval(function () {
                     if(right == 3) {
-                        game.style.display = "none"
-                        body[0].innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"                        clearInterval(gameinterval)
-                        skip.style.display = "none"
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"              
+                        clearInterval(gameinterval)                    
                     }
                     if(wrong == 1) {
-                        game.style.display = "none"
-                        body[0].innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
-                        clearInterval(gameinterval)
-                        skip.style.display = "none"
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva" 
+                        clearInterval(gameinterval)                    
                     }
                     for(let anyád = 0; anyád < 10; anyád++) {
                         do {
-                        var i = Math.floor(Math.random() * 3)
-                        var k = Math.floor(Math.random() * 3)
-                        var random1 = Math.floor(Math.random() * 3)
-                        var random2 = Math.floor(Math.random() * 3)
+                            var i = Math.floor(Math.random() * 3)
+                            var k = Math.floor(Math.random() * 3)
+                            var random1 = Math.floor(Math.random() * 3)
+                            var random2 = Math.floor(Math.random() * 3)
                         }
                         while(matrix[i][k] == matrix[random1][random2])
                         let temp = matrix[random1][random2]
@@ -408,33 +405,30 @@
                     }
                     for(let j = 0; j < 3; j++) {
                         for(let l = 0; l < 3; l++) {
-                        if(matrix[j][l][0] == kanál) {
-                            document.getElementById("g"+String(j)+String(l)).onclick = function() {
-                            console.log("gratula")
-                            right++
-                            matrix[j][l] = villa
-                            document.getElementById("g"+String(j)+String(l)).innerHTML = matrix[j][l]
+                            if(matrix[j][l][0] == kanál) {
+                                document.getElementById("g"+String(j)+String(l)).onclick = function() {
+                                console.log("gratula")
+                                right++
+                                matrix[j][l] = villa
+                                document.getElementById("g"+String(j)+String(l)).innerHTML = matrix[j][l]
+                                }
                             }
-                        }
-                        else {
-                            document.getElementById("g"+String(j)+String(l)).onclick = function() {
-                            console.log("balfasz")
-                            wrong++
-                            document.getElementById("g"+String(j)+String(l)).innerHTML = ""
+                            else {
+                                document.getElementById("g"+String(j)+String(l)).onclick = function() {
+                                console.log("balfasz")
+                                wrong++
+                                document.getElementById("g"+String(j)+String(l)).innerHTML = ""
+                                }
                             }
-                        }
                         }
                     }
                     if(right == 3) {
-                        game.style.display = "none"
-                        body[0].innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"                        clearInterval(gameinterval)
-                        skip.style.display = "none"
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"              
+                        clearInterval(gameinterval)                    
                     }
                     if(wrong == 1) {
-                        game.style.display = "none"
-                        body[0].innerHTML = "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"
-                        clearInterval(gameinterval)
-                        skip.style.display = "none"
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva" 
+                        clearInterval(gameinterval)                    
                     }
                     }, 1000)
             }
