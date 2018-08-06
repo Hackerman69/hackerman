@@ -170,6 +170,123 @@
           </div>  
         <script>
 
+            function game() {
+                console.log("yellow")
+                started = true
+                var right = 0
+                var wrong = 0
+
+                var kanál = '<img class = "kanál" src="kanál.png">'
+                var kés = '<img class = "késvilla" src="kés.png">'
+                var villa = '<img class = "késvilla" src="villa.png">'
+                var game = document.getElementById("game")
+                game.style.display = "block"
+                game.style.display = "grid"
+                game.innerHTML = '<div id = "g00"></div><div id = "g10"></div><div id = "g20"></div><div id = "g01"></div><div id = "g11"></div><div id = "g21"></div><div id = "g02"></div><div id = "g12"></div><div id = "g22"></div>'
+
+                var firsttime = []
+                for(let i = 0; i < 3; i++) {
+                    firsttime.push(villa)
+                }
+                for(let i = 0; i < 3; i++) {
+                    firsttime.push(kanál)
+                }
+                for(let i = 0; i < 3; i++) {
+                    firsttime.push(kés)
+                }
+
+                function shuffleArray(array) {
+                    for (var i = array.length - 1; i > 0; i--) {
+                        var j = Math.floor(Math.random() * (i + 1));
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+                shuffleArray(firsttime)
+                var matrix =[]
+                for(let i = 0; i < 3; i++) {
+                    matrix.push([])
+                }
+                    
+                while(firsttime.length) {
+                    for(let i = 0; i < 3; i++) {
+                        for(let k = 0; k < 3; k++) {
+                            let index = Math.floor(Math.random * firsttime.length)
+                            let element = firsttime.splice(index, 1)
+                            matrix[i][k] = element
+                            document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
+                        }
+                        
+                    }
+                }
+                    
+                var kanalak = document.getElementsByClassName("kanál")
+                kanalak.onclick = function() {
+                    console.log("gratula")
+                    right++
+                }
+
+                var késvilla = document.getElementsByClassName("késvilla")
+                késvilla.onclick = function() {
+                    console.log("balfasz")
+                    wrong++
+                }
+                    
+
+                    var gameinterval = setInterval(function () {
+                    if(right == 3) {
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"              
+                        clearInterval(gameinterval)                    
+                    }
+                    if(wrong == 1) {
+                        game.innerHTML =  "adok még egy esélyt, de csak azért, mert kedves kedvemben vagyok" + '<div style = "text-decoration: underline; text-align:center; vertical-align:middle;" onclick = game()>Újra</div>'
+                        clearInterval(gameinterval)                    
+                    }
+                    for(let anyád = 0; anyád < 10; anyád++) {
+                        do {
+                            var i = Math.floor(Math.random() * 3)
+                            var k = Math.floor(Math.random() * 3)
+                            var random1 = Math.floor(Math.random() * 3)
+                            var random2 = Math.floor(Math.random() * 3)
+                        }
+                        while(matrix[i][k] == matrix[random1][random2])
+                        let temp = matrix[random1][random2]
+                        matrix[random1][random2] = matrix[i][k]
+                        matrix[i][k] = temp
+                        document.getElementById("g"+String(i)+String(k)).innerHTML = matrix[i][k]
+                        document.getElementById("g"+String(random1)+String(random2)).innerHTML = matrix[random1][random2]
+                    }
+                    for(let j = 0; j < 3; j++) {
+                        for(let l = 0; l < 3; l++) {
+                            if(matrix[j][l][0] == kanál) {
+                                document.getElementById("g"+String(j)+String(l)).onclick = function() {
+                                console.log("gratula")
+                                right++
+                                matrix[j][l] = villa
+                                document.getElementById("g"+String(j)+String(l)).innerHTML = matrix[j][l]
+                                }
+                            }
+                            else {
+                                document.getElementById("g"+String(j)+String(l)).onclick = function() {
+                                console.log("balfasz")
+                                wrong++
+                                document.getElementById("g"+String(j)+String(l)).innerHTML = ""
+                                }
+                            }
+                        }
+                    }
+                    if(right == 3) {
+                        game.innerHTML =  "gratulálok, megmentetted lorenzot. megmondhatod neki, hogy a leves ki lett kanalazva"              
+                        clearInterval(gameinterval)                    
+                    }
+                    if(wrong == 1) {
+                        game.innerHTML =  "adok még egy esélyt, de csak azért, mert kedves kedvemben vagyok" + '<div style = "text-decoration: underline; text-align:center; vertical-align:middle;" onclick = game()>Újra</div>'
+                        clearInterval(gameinterval)                    
+                    }
+                    }, (Math.random()*500)+500)
+            }
+
             var hackerman = document.getElementById("hackerman") 
             var text = document.getElementById("text")
             document.addEventListener('DOMContentLoaded',function(event){
@@ -258,7 +375,7 @@
                         clearInterval(gameinterval)                    
                     }
                     if(wrong == 1) {
-                        game.innerHTML =  "adok még egy esélyt, ha újratöltöd az oldalt" 
+                        game.innerHTML =  "adok még egy esélyt, de csak azért, mert kedves kedvemben vagyok" + '<div style = "text-decoration: underline; text-align:center; vertical-align:middle;" onclick = game()>Újra</div>'
                         clearInterval(gameinterval)                    
                     }
                     for(let anyád = 0; anyád < 10; anyád++) {
@@ -299,7 +416,7 @@
                         clearInterval(gameinterval)                    
                     }
                     if(wrong == 1) {
-                        game.innerHTML =  "adok még egy esélyt, ha újratöltöd az oldalt"
+                        game.innerHTML =  "adok még egy esélyt, de csak azért, mert kedves kedvemben vagyok" + '<div style = "text-decoration: underline; text-align:center; vertical-align:middle;" onclick = game()>Újra</div>'
                         clearInterval(gameinterval)                    
                     }
                     }, (Math.random()*500)+500)
@@ -386,7 +503,7 @@
                         clearInterval(gameinterval)                    
                     }
                     if(wrong == 1) {
-                        game.innerHTML =  "adok még egy esélyt, ha újratöltöd az oldalt"
+                        game.innerHTML =  "adok még egy esélyt, de csak azért, mert kedves kedvemben vagyok" + '<div style = "text-decoration: underline; text-align:center; vertical-align:middle;" onclick = game()>Újra</div>'
                         clearInterval(gameinterval)                    
                     }
                     for(let anyád = 0; anyád < 10; anyád++) {
@@ -427,7 +544,7 @@
                         clearInterval(gameinterval)                    
                     }
                     if(wrong == 1) {
-                        game.innerHTML =  "adok még egy esélyt, ha újratöltöd az oldalt"
+                        game.innerHTML =  "adok még egy esélyt, de csak azért, mert kedves kedvemben vagyok" + '<div style = "text-decoration: underline; text-align:center; vertical-align:middle;" onclick = game()>Újra</div>'
                         clearInterval(gameinterval)                    
                     }
                     }, (Math.random()*500)+500)
